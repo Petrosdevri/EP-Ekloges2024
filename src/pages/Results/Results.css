@@ -1,0 +1,33 @@
+.results {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.results-charts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.screenshot-btn {
+    background: #0055A0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .results-charts {
+        padding: 0;
+    }
+
+    .bar-chart > svg {
+        width: 350px !important;
+        height: 450px !important;
+    }
+
+    .pie-chart > .recharts-legend-wrapper {
+        width: 375px !important;
+        margin-left: 1.5em;
+    }
+}
