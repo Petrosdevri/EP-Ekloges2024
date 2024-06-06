@@ -6,7 +6,7 @@ import PieGraph from './PieGraph';
 
 export default function ResultsCharts({ barData, pieData, upperHeight }) {
     const [screenshot, takeScreenshot] = useScreenshot();
-    console.log(screenshot);
+    // console.log(screenshot);
     const seatRef = useRef(null);
     const voteRef = useRef(null);
     const getSeats = async () => {
@@ -30,14 +30,18 @@ export default function ResultsCharts({ barData, pieData, upperHeight }) {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+    };
+
+    function isMobileDevice() {
+        return window.innerWidth <= 768;
     }
 
     return (
         <Stack className='results-charts' gap={5}>
             <BarGraph barData={barData} upperHeight={upperHeight} getVotes={getVotes} voteRef={voteRef} />
-            <Button className='screenshot-btn' variant='primary' onClick={getVotes}>Λήψη Screenshot</Button>
+            { !isMobileDevice() ? <Button className='screenshot-btn' variant='primary' onClick={getVotes}>Λήψη Screenshot</Button> : '' }
             <PieGraph pieData={pieData} getSeats={getSeats} seatRef={seatRef} />
-            <Button className='screenshot-btn' variant='primary' onClick={getSeats}>Λήψη Screenshot</Button>
+            { !isMobileDevice() ? <Button className='screenshot-btn' variant='primary' onClick={getSeats}>Λήψη Screenshot</Button> : '' }
         </Stack>
     )
 }
