@@ -1,36 +1,11 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { system24 } from '@poliverse/european-elections-greece';
 import { Button, Stack } from 'react-bootstrap';
 import Ballot from './Ballot';
 
-export default function Home() {
+export default function Home({ nd, syriza, pasok, kke, el, niki, pe, mera25, patriotes, fl, epam, dixa, antarsya, laos, ek, em, mlkke, na, dimokrates, kosmos, electoralThreshold, seatDistribution, showResults, setND, setSYRIZA, setPASOK, setKKE, setEL, setNIKI, setPE, setMeRA25, setPatriotes, setFL, setEPAM, setDIXA, setANTARSYA, setLAOS, setEK, setEM, setMLKKE, setNA, setDimokrates, setKosmos, setElectoralThreshold, setSeatDistribution, setShowResults }) {
     const navigate = useNavigate();
-
-    const [nd, setND] = useState(0);
-    const [syriza, setSYRIZA] = useState(0);
-    const [pasok, setPASOK] = useState(0);
-    const [kke, setKKE] = useState(0);
-    const [el, setEL] = useState(0);
-    const [niki, setNIKI] = useState(0);
-    const [pe, setPE] = useState(0);
-    const [mera25, setMeRA25] = useState(0);
-    const [patriotes, setPatriotes] = useState(0);
-    const [fl, setFL] = useState(0);
-    const [epam, setEPAM] = useState(0);
-    const [dixa, setDIXA] = useState(0);
-    const [antarsya, setANTARSYA] = useState(0);
-    const [laos, setLAOS] = useState(0);
-    const [ek, setEK] = useState(0);
-    const [em, setEM] = useState(0);
-    const [mlkke, setMLKKE] = useState(0);
-    const [na, setNA] = useState(0);
-    const [dimokrates, setDimokrates] = useState(0);
-    const [kosmos, setKosmos] = useState(0);
-    const [electoralThreshold, setElectoralThreshold] = useState(3);
-    const [seatDistribution, setSeatDistribution] = useState([]);
-    const [showResults, setShowResults] = useState(false);
 
     function isMobileDevice() {
         return (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1);
@@ -43,9 +18,14 @@ export default function Home() {
             parseFloat(epam), parseFloat(dixa), parseFloat(antarsya), parseFloat(laos), parseFloat(ek),
             parseFloat(em), parseFloat(mlkke), parseFloat(na), parseFloat(dimokrates), parseFloat(kosmos)
         ];
+        const totalPercentages = percentages.reduce((a, b) => a + b, 0);
 
         if(percentages.some(isNaN)) {
             alert('Παρακαλώ εισάγετε έγκυρα ποσοστά ψήφων για κάθε κόμμα.');
+            return;
+        }
+        if (totalPercentages > 100) {
+            alert('Το ποσοστό δεν πρέπει να ξεπερνά το 100%!');
             return;
         }
 
@@ -93,7 +73,7 @@ export default function Home() {
             <p>Η σειρά των κομμάτων βασίζεται στα αποτελέσματά τους στις εκλογές του Ιουλίου 2023, καθώς και στην περίοδο ίδρυσης τους.</p>
             {/* <Ballot nd={nd} syriza={syriza} pasok={pasok} kke={kke} el={el} niki={niki} pe={pe} mera25={mera25} patriotes={patriotes} fl={fl} epam={epam} dixa={dixa} antarsya={antarsya} laos={laos} ek={ek} em={em} mlkke={mlkke} na={na} dimokrates={dimokrates} kosmos={kosmos} showResults={showResults} setND={setND} setSYRIZA={setSYRIZA} setPASOK={setPASOK} setKKE={setKKE} setEL={setEL} setNIKI={setNIKI} setPE={setPE} setMeRA25={setMeRA25} setPatriotes={setPatriotes} setFL={setFL} setEPAM={setEPAM} setDIXA={setDIXA} setLAOS={setLAOS} setANTARSYA={setANTARSYA} setEK={setEK} setEM={setEM} setMLKKE={setMLKKE} setNA={setNA} setDimokrates={setDimokrates} setKosmos={setKosmos} setShowResults={setShowResults} /> */}
             <Ballot nd={nd} syriza={syriza} pasok={pasok} kke={kke} el={el} niki={niki} pe={pe} mera25={mera25} patriotes={patriotes} fl={fl} epam={epam} dixa={dixa} antarsya={antarsya} laos={laos} ek={ek} em={em} mlkke={mlkke} na={na} dimokrates={dimokrates} kosmos={kosmos} setND={setND} setSYRIZA={setSYRIZA} setPASOK={setPASOK} setKKE={setKKE} setEL={setEL} setNIKI={setNIKI} setPE={setPE} setMeRA25={setMeRA25} setPatriotes={setPatriotes} setFL={setFL} setEPAM={setEPAM} setDIXA={setDIXA} setANTARSYA={setANTARSYA} setLAOS={setLAOS} setEK={setEK} setEM={setEM} setMLKKE={setMLKKE} setNA={setNA} setDimokrates={setDimokrates} setKosmos={setKosmos} />
-            {isMobileDevice() ? <Button className='submit-btn' onClick={() => { setShowResults(true); console.log(showResults); handleResults(); }}>Υποβολή</Button> :
+            {isMobileDevice() ? <Button className='submit-btn' onClick={() => { setShowResults(true); handleResults(); }}>Υποβολή</Button> :
             <Button className='submit-btn' onClick={() => { setShowResults(true); handleResults(); }}>Υποβολή</Button> }
         </Stack>
     )
