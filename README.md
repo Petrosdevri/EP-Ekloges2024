@@ -1,5 +1,5 @@
-# EP Ekloges2024 Greece 
-EP Ekloges2024 Greece is a web application that simulates the distribution of Greek seats in the European Parliament based on the newly introduced d'Hondt method.
+# EP Ekloges2024
+EP Ekloges2024 is a web application that simulates the distribution of Greek seats in the European Parliament based on the newly introduced d'Hondt method.
 
 # Features
 - Simulate seat distribution using the d'Hondt method.
