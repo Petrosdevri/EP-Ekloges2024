@@ -1,20 +1,12 @@
 import './Results.css';
-import { useLocation } from 'react-router-dom';
 import ResultsCharts from './ResultsCharts';
 
-export default function Results() {
-    const location = useLocation();
-    const { seatDistribution, nd, syriza, pasok, kke, el, niki, pe, mera25, 
-        patriotes, fl, epam, dixa, antarsya, laos, ek, em, mlkke, na, 
-        dimokrates, kosmos } = location.state;
-        console.log(seatDistribution, nd, syriza, pasok, kke, el, niki, pe, mera25, 
-            patriotes, fl, epam, dixa, antarsya, laos, ek, em, mlkke, na, 
-            dimokrates, kosmos );
+export default function Results({ seatDistribution, nd, syriza, pasok, kke, el, niki, pe, mera25, patriotes, fl, epam, dixa, antarsya, laos, ek, em, mlkke, na, dimokrates, kosmos }) {
     const partyColors = ['#1D6EC8', '#CC1C24', '#00793A', '#DF251C', '#8DBEE2', '#BD552C', '#972490', '#EB4326', '#1B395A', '#2890DE', '#16459A', '#EB8C1E', '#D82F33', '#000080', '#F2D308', '#18629F', '#D11F20', '#C53638', '#2C14EC', '#169A4D'];
 
     const barData = [
         {party: 'ΝΔ', percentage: nd, fill: partyColors[0]},
-        {party: 'ΣΥΡ', percentage: syriza, fill: partyColors[1]},
+        {party: 'ΣΥΡΙΖΑ', percentage: syriza, fill: partyColors[1]},
         {party: 'ΠΑΣΟΚ', percentage: pasok, fill: partyColors[2]},
         {party: 'ΚΚΕ', percentage: kke, fill: partyColors[3]},
         {party: 'ΕΛ', percentage: el, fill: partyColors[4]},    
@@ -33,7 +25,7 @@ export default function Results() {
         {party: 'NA', percentage: na, fill: partyColors[17]},
         {party: 'ΔΗΜ', percentage: dimokrates, fill: partyColors[18]},
         {party: 'ΚΟΣ', percentage: kosmos, fill: partyColors[19]}
-    ];
+    ].filter(p => p.percentage > 0);
 
     const maxPercentage = Math.max(...barData.map(entry => entry.percentage));
     const upperHeight = Math.ceil(maxPercentage / 5) * 5;
@@ -59,10 +51,10 @@ export default function Results() {
         {party: 'NA', seats: seatDistribution[17], fill: partyColors[17]},
         {party: 'ΔΗΜ', seats: seatDistribution[18], fill: partyColors[18]},
         {party: 'ΚΟΣ', seats: seatDistribution[19], fill: partyColors[19]}
-    ];
+    ].filter(p => p.seats > 0);
 
     return (
-        <div className='results'>
+        <div className='results d-flex flex-column gap-4'>
             <header className='header'></header>
             <h1>Τα αποτελέσματα των επιλογών σας</h1>
             <ResultsCharts barData={barData} pieData={pieData} upperHeight={upperHeight} />

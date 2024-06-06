@@ -7,34 +7,37 @@ import Results from './pages/Results/Results';
 import Footer from './components/Footer';
 
 function App() {
-  const [ND, setND] = useState(0);
-  const [SYRIZA, setSYRIZA] = useState(0);
-  const [PASOK, setPASOK] = useState(0);
-  const [KKE, setKKE] = useState(0);
-  const [EL, setEL] = useState(0);
-  const [NIKI, setNIKI] = useState(0);
-  const [PE, setPE] = useState(0);
-  const [MeRA25, setMeRA25] = useState(0);
-  const [EPAM, setEPAM] = useState(0);
-  const [ED, setED] = useState(0);
-  const [OP, setOP] = useState(0);
-  const [patriotes, setPatriotes] = useState(0);
-  const [ANTARSYA, setANTARSYA] = useState(0);
-  const [EK, setEK] = useState(0);
-  const [mlkke, setMLKKE] = useState(0);
-  const [Spartiates, setSpartiates] = useState(0);
-  const [electoralSystem, setElectoralSystem] = useState('apliAnalogiki');
-  const [electoralThreshold, setElectoralThreshold] = useState(3);
-  const [seatDistribution, setSeatDistribution] = useState();
-  const [showResults, setShowResults] = useState(false);
+    const [nd, setND] = useState(0);
+    const [syriza, setSYRIZA] = useState(0);
+    const [pasok, setPASOK] = useState(0);
+    const [kke, setKKE] = useState(0);
+    const [el, setEL] = useState(0);
+    const [niki, setNIKI] = useState(0);
+    const [pe, setPE] = useState(0);
+    const [mera25, setMeRA25] = useState(0);
+    const [patriotes, setPatriotes] = useState(0);
+    const [fl, setFL] = useState(0);
+    const [epam, setEPAM] = useState(0);
+    const [dixa, setDIXA] = useState(0);
+    const [antarsya, setANTARSYA] = useState(0);
+    const [laos, setLAOS] = useState(0);
+    const [ek, setEK] = useState(0);
+    const [em, setEM] = useState(0);
+    const [mlkke, setMLKKE] = useState(0);
+    const [na, setNA] = useState(0);
+    const [dimokrates, setDimokrates] = useState(0);
+    const [kosmos, setKosmos] = useState(0);
+    const [electoralThreshold, setElectoralThreshold] = useState(3);
+    const [seatDistribution, setSeatDistribution] = useState([]);
+    const [showResults, setShowResults] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
         <Routes>
-          <Route path='/' element={<Home nd={ND} syriza={SYRIZA} pasok={PASOK} kke={KKE} el={EL} niki={NIKI} pe={PE} mera25={MeRA25} epam={EPAM} ed={ED} op={OP} patriotes={patriotes} antarsya={ANTARSYA} ek={EK} mlkke={mlkke} spartiates={Spartiates} electoralSystem={electoralSystem} electoralThreshold={electoralThreshold} seatDistribution={seatDistribution} showResults={showResults} setND={setND} setSYRIZA={setSYRIZA} setPASOK={setPASOK} setKKE={setKKE} setEL={setEL} setNIKI={setNIKI} setPE={setPE} setMeRA25={setMeRA25} setEPAM={setEPAM} setED={setED} setOP={setOP} setPatriotes={setPatriotes} setANTARSYA={setANTARSYA} setEK={setEK} setMLKKE={setMLKKE} setSpartiates={setSpartiates} setElectoralSystem={setElectoralSystem} setElectoralThreshold={setElectoralThreshold} setSeatDistribution={setSeatDistribution} setShowResults={setShowResults} />} />
-          <Route path='/results' element={<Results nd={ND} syriza={SYRIZA} pasok={PASOK} kke={KKE} el={EL} niki={NIKI} pe={PE} mera25={MeRA25} epam={EPAM} ed={ED} op={OP} patriotes={patriotes} antarsya={ANTARSYA} ek={EK} mlkke={mlkke} spartiates={Spartiates} electoralSystem={electoralSystem} electoralThreshold={electoralThreshold} seatDistribution={seatDistribution} />} />
+          <Route path='/' element={<Home nd={nd} syriza={syriza} pasok={pasok} kke={kke} el={el} niki={niki} pe={pe} mera25={mera25} patriotes={patriotes} fl={fl} epam={epam} dixa={dixa} antarsya={antarsya} laos={laos} ek={ek} em={em} mlkke={mlkke} na={na} dimokrates={dimokrates} kosmos={kosmos} electoralThreshold={electoralThreshold} seatDistribution={seatDistribution} showResults={showResults} setND={setND} setSYRIZA={setSYRIZA} setPASOK={setPASOK} setKKE={setKKE} setEL={setEL} setNIKI={setNIKI} setPE={setPE} setMeRA25={setMeRA25} setPatriotes={setPatriotes} setFL={setFL} setEPAM={setEPAM} setDIXA={setDIXA} setLAOS={setLAOS} setANTARSYA={setANTARSYA} setEK={setEK} setEM={setEM} setMLKKE={setMLKKE} setNA={setNA} setDimokrates={setDimokrates} setKosmos={setKosmos} setElectoralThreshold={setElectoralThreshold} setSeatDistribution={setSeatDistribution} setShowResults={setShowResults} />} />
+          <Route path='/results' element={<Results nd={nd} syriza={syriza} pasok={pasok} kke={kke} el={el} niki={niki} pe={pe} mera25={mera25} patriotes={patriotes} fl={fl} epam={epam} dixa={dixa} antarsya={antarsya} laos={laos} ek={ek} em={em} mlkke={mlkke} na={na} dimokrates={dimokrates} kosmos={kosmos} electoralThreshold={electoralThreshold} seatDistribution={seatDistribution} />} />
         </Routes>
         <Footer />
       </div>
