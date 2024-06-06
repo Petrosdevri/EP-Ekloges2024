@@ -6,7 +6,7 @@ import PieGraph from './PieGraph';
 
 export default function ResultsCharts({ barData, pieData, upperHeight }) {
     const [screenshot, takeScreenshot] = useScreenshot();
-    // console.log(screenshot);
+    console.log(screenshot);
     const seatRef = useRef(null);
     const voteRef = useRef(null);
     const getSeats = async () => {
