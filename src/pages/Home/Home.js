@@ -32,9 +32,7 @@ export default function Home({ nd, syriza, pasok, kke, el, niki, pe, mera25, pat
         let newSeatDistribution = system24(percentages, electoralThreshold)
         setSeatDistribution(newSeatDistribution);
         console.log(seatDistribution)
-        navigate('/results', { state: { seatDistribution: newSeatDistribution, nd, syriza, pasok, kke, el, niki, pe, mera25, patriotes, fl, 
-            epam, dixa, antarsya, laos, ek, em, mlkke, na, dimokrates, kosmos
-        }});
+        navigate('/results', { state: { seatDistribution: newSeatDistribution }});
     }
 
     // const renderPopover = () => (
