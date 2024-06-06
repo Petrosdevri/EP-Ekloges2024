@@ -1,7 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 export default function PieGraph({ pieData, seatRef }) {
-    console.log(pieData);
     return (
         <div className='results-chart' ref={seatRef}>
             <h2>Κατανομή Εδρών</h2>

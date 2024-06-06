@@ -8,8 +8,8 @@ export default function Home({ nd, syriza, pasok, kke, el, niki, pe, mera25, pat
     const navigate = useNavigate();
 
     function isMobileDevice() {
-        return (typeof window.orientation !== 'undefined') || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    }
+        return window.innerWidth <= 768;
+    };
 
     function handleResults() {
         const percentages = [
@@ -31,7 +31,6 @@ export default function Home({ nd, syriza, pasok, kke, el, niki, pe, mera25, pat
 
         let newSeatDistribution = system24(percentages, electoralThreshold)
         setSeatDistribution(newSeatDistribution);
-        console.log(seatDistribution)
         navigate('/results', { state: { seatDistribution: newSeatDistribution }});
     }
 
