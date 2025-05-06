@@ -25,7 +25,7 @@ export default function Results({ seatDistribution, nd, syriza, pasok, kke, el, 
         {party: 'NA', percentage: na, fill: partyColors[17]},
         {party: 'ΔΗΜ', percentage: dimokrates, fill: partyColors[18]},
         {party: 'ΚΟΣ', percentage: kosmos, fill: partyColors[19]}
-    ].filter(p => p.percentage > 0);
+    ].filter(p => p.percentage > 0).sort((a, b) => b.percentage - a.percentage);
 
     const maxPercentage = Math.max(...barData.map(entry => entry.percentage));
     const upperHeight = Math.ceil(maxPercentage / 5) * 5;
@@ -51,7 +51,7 @@ export default function Results({ seatDistribution, nd, syriza, pasok, kke, el, 
         {party: 'NA', seats: seatDistribution[17], fill: partyColors[17]},
         {party: 'ΔΗΜ', seats: seatDistribution[18], fill: partyColors[18]},
         {party: 'ΚΟΣ', seats: seatDistribution[19], fill: partyColors[19]}
-    ].filter(p => p.seats > 0);
+    ].filter(p => p.seats > 0).sort((a, b) => b.seats - a.seats);
 
     return (
         <div className='results d-flex flex-column gap-4'>
