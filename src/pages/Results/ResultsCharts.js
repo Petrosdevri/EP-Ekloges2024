@@ -4,7 +4,9 @@ import { useScreenshot } from 'use-react-screenshot';
 import BarGraph from './BarGraph';
 import PieGraph from './PieGraph';
 
-export default function ResultsCharts({ barData, pieData, upperHeight }) {
+export default function ResultsCharts({ barData, pieData, theme, upperHeight }) {
+    const chartBg = theme === 'dark' ? '#2d2d2d' : '#ffffff';
+    const chartTextColor = theme === 'dark' ? '#ffffff' : '#000000';
     const [screenshot, takeScreenshot] = useScreenshot();
     console.log(screenshot);
     const seatRef = useRef(null);
@@ -38,9 +40,9 @@ export default function ResultsCharts({ barData, pieData, upperHeight }) {
 
     return (
         <Stack className='results-charts' gap={5}>
-            <BarGraph barData={barData} upperHeight={upperHeight} getVotes={getVotes} voteRef={voteRef} />
+            <BarGraph barData={barData} upperHeight={upperHeight} getVotes={getVotes} voteRef={voteRef} chartBg={chartBg} chartTextColor={chartTextColor} />
             { !isMobileDevice() ? <Button className='screenshot-btn' variant='primary' onClick={getVotes}>Λήψη Screenshot</Button> : '' }
-            <PieGraph pieData={pieData} getSeats={getSeats} seatRef={seatRef} />
+            <PieGraph pieData={pieData} getSeats={getSeats} seatRef={seatRef} chartBg={chartBg} chartTextColor={chartTextColor} />
             { !isMobileDevice() ? <Button className='screenshot-btn' variant='primary' onClick={getSeats}>Λήψη Screenshot</Button> : '' }
         </Stack>
     )
